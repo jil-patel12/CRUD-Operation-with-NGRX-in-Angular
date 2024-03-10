@@ -1,0 +1,31 @@
+<!--Product details-->
+<div class="container" *ngIf="!loader;else load">
+    <div class="product-details my-5">
+        <button type="button" class="btn btn-sm me-3 border" routerLink="/products" style="width: 3%;">
+            <img class="w-100" src="assets/images/thin-arrow-left-icon.png" alt="back icon" >
+        </button>
+        <div class="card mx-auto" style="width: 30rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{productDetails.name}}</h5>
+                <h6 class="card-subtitle mb-2 text-body-secondary">{{productDetails.price}} Rs.</h6>
+                <p class="card-text">Quantity : {{quantity}}</p>
+                <div class="d-flex justify-content-between">
+                    <button type="button" class="btn btn-sm me-3 border" (click)="decreaseQuantity()">
+                        Decrease Quantity
+                    </button>
+                    <button type="button" class="btn btn-sm me-3 border" (click)="increaseQuantity()">
+                        Increase Quantity
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #load>
+    <div class="fade show" style="text-align: center; padding-top: calc(100vh / 2); height: 100vh">
+        <i class="spinner-grow spinner-grow-sm"></i>
+        <span class="m-1">Loading...</span>
+    </div>
+</ng-template>
+<!--Product details End-->

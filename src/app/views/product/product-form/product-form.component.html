@@ -1,0 +1,56 @@
+<!--Product form-->
+<div class="container" *ngIf="!loader;else load">
+    <div class="product-form-card my-5">
+        <div class="card">
+            <h5 class="card-header">Product Form</h5>
+            <div class="card-body">
+                <form [formGroup]="productForm">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Product Name</span>
+                        <input type="hidden" formControlName="id" class="form-control" />
+                        <input type="text" formControlName="name" class="form-control" />
+                    </div>
+                    <p class="text-danger" *ngIf="isFieldValid('name')">
+                        Please Enter Product Name.
+                    </p>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Price (in INR)</span>
+                        <input type="number" formControlName="price" class="form-control" />
+                    </div>
+                    <p class="text-danger" *ngIf="isFieldValid('price')">
+                        Please Enter Product Price.
+                    </p>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Quantity</span>
+                        <input type="number" formControlName="quantity" class="form-control" />
+                    </div>
+                    <p class="text-danger" *ngIf="isFieldValid('quantity')">
+                        Please Enter Product Quantity.
+                    </p>
+                </form>
+
+                <div class="d-flex justify-content-between mt-3">
+                    <div class="cancel-btn">
+                        <button type="button" class="btn btn-danger btn-sm px-3" routerLink="/products">
+                            Cancel
+                        </button>
+                    </div>
+
+                    <div class="submit-btn">
+                        <button type="button" class="btn btn-success btn-sm px-3" (click)="submitProductForm()">
+                            {{ editMode ? "Update" : "Save" }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #load>
+    <div class="fade show" style="text-align: center; padding-top: calc(100vh / 2); height: 100vh">
+        <i class="spinner-grow spinner-grow-sm"></i>
+        <span class="m-1">Loading...</span>
+    </div>
+</ng-template>
+<!--Product form end-->

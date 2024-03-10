@@ -1,0 +1,28 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Product 1",
+      "price": 25,
+      "quantity": 9
+    },
+    {
+      "id": "2",
+      "name": "Product 2",
+      "price": 10,
+      "quantity": 3
+    },
+    {
+      "id": "3",
+      "name": "Product 3",
+      "price": 50,
+      "quantity": 1
+    },
+    {
+      "id": "363f00fc-1bd6-4184-b4ab-31fcfaa2099a",
+      "name": "Dell latop ",
+      "price": 32000,
+      "quantity": 5
+    }
+  ]
+}

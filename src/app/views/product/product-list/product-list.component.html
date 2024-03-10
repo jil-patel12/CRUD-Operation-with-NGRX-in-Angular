@@ -1,0 +1,83 @@
+<div class="container">
+    <div class="product-list-table my-5 p-4 border">
+        <div class="table-header d-flex justify-content-between">
+            <div class="heading w-100">
+                <h5 class="text-dark m-0">Product List</h5>
+            </div>
+            <div class="add-btn d-flex justify-content-end">
+                <div class="search-btn me-3 w-50">
+                    <div class="input-group input-group-sm flex-nowrap">
+                        <span class="input-group-text" id="addon-wrapping" style="width: 17%;">
+                            <img class="w-100" src="assets/images/magnifying-glass-icon.png" alt="search icon" />
+                        </span>
+                        <input type="text" class="form-control" placeholder="Search" [(ngModel)]="search" (keyup)="searchInputChange()">
+                    </div>
+                </div>
+                <a routerLink="/add">
+                    <button type="button" class="btn btn-primary btn-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
+                            <g id="Group_47" data-name="Group 47" transform="translate(-582 -564)">
+                                <rect id="Rectangle_62" data-name="Rectangle 62" width="2" height="12"
+                                    transform="translate(587 564)" fill="#fff" />
+                                <rect id="Rectangle_63" data-name="Rectangle 63" width="12" height="2"
+                                    transform="translate(582 569)" fill="#fff" />
+                            </g>
+                        </svg>
+                        Add Product
+                    </button>
+                </a>
+            </div>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of productFiltered$ | async">
+                    <td>{{product.name}}</td>
+                    <td>{{product.price}}</td>
+                    <td>{{product.quantity}}</td>
+                    <td>
+                        <div class="d-flex">
+                            <button type="button" class="btn btn-sm me-3 border" [routerLink]="[product.id]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="17.142" height="12"
+                                    viewBox="0 0 17.142 12">
+                                    <g id="Group_6943" data-name="Group 6943" transform="translate(-1126.001 -351)">
+                                        <path id="Subtraction_18" data-name="Subtraction 18"
+                                            d="M8.571,12A8.966,8.966,0,0,1,2.627,9.282,17.247,17.247,0,0,1,.134,6.438a.783.783,0,0,1,0-.876A17.225,17.225,0,0,1,2.627,2.717,8.971,8.971,0,0,1,8.571,0a8.96,8.96,0,0,1,5.942,2.717,17.224,17.224,0,0,1,2.494,2.843.794.794,0,0,1,.135.44.786.786,0,0,1-.134.437L17,6.45a17.355,17.355,0,0,1-2.487,2.832,12.18,12.18,0,0,1-2.627,1.862A7.286,7.286,0,0,1,8.571,12Zm0-9.428A3.429,3.429,0,1,0,12,6,3.433,3.433,0,0,0,8.571,2.572Z"
+                                            transform="translate(1126.001 351)" fill="#778299" />
+                                        <circle id="Ellipse_2824" data-name="Ellipse 2824" cx="1.714" cy="1.714"
+                                            r="1.714" transform="translate(1132.856 355.286)" fill="#778299" />
+                                    </g>
+                                </svg>
+                            </button>
+                            <button type="button" class="btn btn-sm me-3 border" [routerLink]="['edit',product.id]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12.013"
+                                    viewBox="0 0 16 16.013">
+                                    <g id="svgg" transform="translate(-0.311 0.236)">
+                                        <path id="path0"
+                                            d="M13.186-.178c-.426.092-.546.178-1.324.95l-.714.708,1.731,1.727,1.731,1.727.677-.677c.929-.928,1.048-1.141,1.021-1.834-.025-.646-.132-.828-1.006-1.7-.9-.9-1.322-1.076-2.116-.9M5.731,6.9,1.294,11.337.8,13.321C.257,15.475.244,15.552.39,15.7s.223.132,2.377-.407l1.984-.5,4.437-4.437c2.44-2.44,4.437-4.451,4.437-4.468,0-.041-3.384-3.425-3.425-3.425-.017,0-2.028,2-4.468,4.437"
+                                            transform="translate(0 0)" fill="#778299" fill-rule="evenodd" />
+                                    </g>
+                                </svg>
+                            </button>
+                            <button type="button" class="btn btn-sm border" (click)="deleteProduct(product.id!)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12.998" height="13.997"
+                                    viewBox="0 0 15.998 17.997">
+                                    <path id="Subtraction_4" data-name="Subtraction 4"
+                                        d="M19572.941-3544.5h-8.887a1.791,1.791,0,0,1-1.779-1.8v-10.8h-1.773v-1.8h3.553v-1.8a1.791,1.791,0,0,1,1.779-1.8h5.33a1.79,1.79,0,0,1,1.777,1.8v1.8h3.559v1.8h-1.779v10.8A1.791,1.791,0,0,1,19572.941-3544.5Zm-3.443-11h0v7h2v-7h-2Zm-4,0h0v7h2v-7h-2Zm.336-5.2h0v1.8h5.33v-1.8h-5.33Z"
+                                        transform="translate(-19560.502 3562.5)" fill="#778299" />
+                                </svg>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

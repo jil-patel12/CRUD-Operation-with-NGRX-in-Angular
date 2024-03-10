@@ -1,0 +1,12 @@
+<!--Edit Product-->
+<div class="edit-product" *ngIf="!loader;else load">
+    <app-product-form [editDate]="editProductData" (updateProduct)="updateProduct($event)"></app-product-form>
+</div>
+
+<ng-template #load>
+    <div class="fade show" style="text-align: center; padding-top: calc(100vh / 2); height: 100vh">
+        <i class="spinner-grow spinner-grow-sm"></i>
+        <span class="m-1">Loading...</span>
+    </div>
+</ng-template>
+<!--Edit Product end-->
